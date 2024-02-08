@@ -1,0 +1,6 @@
+/*
+    Anthony Cieri
+
+    
+    This file holds the Generation class and functions
+ */
