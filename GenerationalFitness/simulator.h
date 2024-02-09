@@ -2,7 +2,10 @@
 /*
     Anthony Cieri
 
-    This holds the stuff that manages everything
+    Simulator is the base class of managers of the simulation of evolution of organisms.
+    It must hold a vector of organisms and run the simulation.
+
+    I will add more to this class in the future as needed.
  */
 
 #ifndef SIMULATOR_H
