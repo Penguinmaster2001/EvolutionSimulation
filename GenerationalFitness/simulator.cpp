@@ -15,6 +15,8 @@ void Simulator::run()
     for (int i = 0; i < this->num_generations; i++)
     {
         this->current_generation = this->current_generation.create_next_generation();
-        std::cout << "Generation " << i << ": " << this->current_generation << "\n";
+        // std::cout << "Generation " << i << ": " << this->current_generation << "\n";
     }
+
+    std::cout << this->current_generation.generate_stats() << "\n";
 }

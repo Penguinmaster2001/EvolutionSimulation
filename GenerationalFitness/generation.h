@@ -14,6 +14,7 @@
 # include <vector>
 # include <random>
 # include <iostream>
+# include <string>
 
 class Generation {
 private:
@@ -41,6 +42,8 @@ public:
 
     std::vector<Organism> get_organisms() const {return this->organisms;};
     void set_organisms(std::vector<Organism> organisms);
+
+    std::string generate_stats();
 
 
     Generation create_next_generation();

@@ -12,7 +12,7 @@ Organism Organism::reproduce(Organism other)
     // The fitness of the offspring is the average of the parents' fitness plus some randomness
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::normal_distribution<> normal_dist(0, 0.05);
+    std::normal_distribution<> normal_dist(0, 0.5);
 
     float new_fitness = ((this->fitness + other.get_fitness()) / 2) + normal_dist(gen);
     Organism offspring(new_fitness);
