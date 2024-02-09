@@ -9,9 +9,12 @@ Organism::Organism(float fitness)
 
 Organism Organism::reproduce(Organism other)
 {
-    // The fitness of the offspring is the average of the parents' fitness for now
-    // TODO: add mutation
-    float new_fitness = (this->fitness + other.get_fitness()) / 2;
+    // The fitness of the offspring is the average of the parents' fitness plus some randomness
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::normal_distribution<> normal_dist(0, 0.05);
+
+    float new_fitness = ((this->fitness + other.get_fitness()) / 2) + normal_dist(gen);
     Organism offspring(new_fitness);
     return offspring;
 }

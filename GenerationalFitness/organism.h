@@ -9,6 +9,7 @@
 # define ORGANISM_H
 
 # include <iostream>
+# include <random>
 
 class Organism {
 private:

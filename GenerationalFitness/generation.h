@@ -10,6 +10,7 @@
 
 # include "organism.h"
 
+# include <algorithm>
 # include <vector>
 # include <random>
 # include <iostream>

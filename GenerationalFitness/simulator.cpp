@@ -11,5 +11,10 @@ Simulator::Simulator(int num_organisms, int num_generations)
 void Simulator::run()
 {
     this->current_generation = Generation(this->num_organisms);
-    std::cout << "Generation 0: " << this->current_generation << std::endl;
+
+    for (int i = 0; i < this->num_generations; i++)
+    {
+        this->current_generation = this->current_generation.create_next_generation();
+        std::cout << "Generation " << i << ": " << this->current_generation << "\n";
+    }
 }
