@@ -8,14 +8,19 @@
 # ifndef ORGANISM_H
 # define ORGANISM_H
 
+# include <iostream>
+
 class Organism {
 private:
-    int fitness;
+    float fitness;
+
+    friend std::ostream& operator<<(std::ostream& os, const Organism& organism);
 
 public:
-    Organism(int fitness);
-    int get_fitness();
-    void set_fitness(int fitness);
+    Organism() : fitness(0.5) {};
+    Organism(float fitness);
+    float get_fitness() const {return this->fitness;}
+    void set_fitness(float fitness) {this->fitness = fitness;}
 
     Organism reproduce(Organism other);
 };
