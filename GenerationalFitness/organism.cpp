@@ -3,32 +3,19 @@
 // Generate new random Organism
 Organism::Organism()
 {
-    
+    this->parents = std::vector<Organism*>();
 }
 
-Organism::Organism(float fitness)
+// Generate Organism as a child with parents
+Organism::Organism(std::vector<Organism *> parents)
 {
-    this->fitness = fitness;
+    this->parents = parents;
 }
 
-
-
+// Generate Organism as a child of two parents
 Organism Organism::reproduce(Organism other)
 {
-    // The fitness of the offspring is the average of the parents' fitness plus some randomness
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::normal_distribution<> normal_dist(0, 0.5);
+    std::vector<Organism*> parents = {this, &other};
 
-    float new_fitness = ((this->fitness + other.get_fitness()) / 2) + normal_dist(gen);
-    Organism offspring(new_fitness);
-    return offspring;
-}
-
-
-
-std::ostream &operator<<(std::ostream &os, const Organism &organism)
-{
-    os << "Organism: " << organism.get_fitness() << " fitness";
-    return os;
+    return Organism(parents);
 }
