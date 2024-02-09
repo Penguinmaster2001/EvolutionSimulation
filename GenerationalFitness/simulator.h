@@ -26,7 +26,7 @@ private:
 public:
     Simulator(int num_organisms);
 
-    void run();
+    virtual void run();
 };
 
 #endif

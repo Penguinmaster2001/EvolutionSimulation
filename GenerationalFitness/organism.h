@@ -47,7 +47,7 @@ public:
     Organism();
     Organism(OrganismVector parents);
 
-    Organism reproduce(Organism other);
+    virtual Organism reproduce(Organism other);
 };
 
 # endif
