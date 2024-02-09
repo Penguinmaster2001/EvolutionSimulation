@@ -12,11 +12,13 @@
 
 # include <iostream>
 # include <string>
+# include <memory>
 
 
 class Simulator {
 private:
     int num_organisms;
+    OrganismVector organisms;
 
 public:
     Simulator(int num_organisms);

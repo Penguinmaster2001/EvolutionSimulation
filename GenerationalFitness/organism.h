@@ -31,17 +31,21 @@
 # ifndef ORGANISM_H
 # define ORGANISM_H
 
-# include <iostream>
 # include <vector>
 # include <random>
+# include <memory>
+
+// Typedefs to make the shared pointers easier to read
+typedef std::shared_ptr<Organism> OrganismPtr;
+typedef std::vector<OrganismPtr> OrganismVector;
 
 class Organism {
 private:
-    std::vector<Organism*> parents;
+    OrganismVector parents;
 
 public:
     Organism();
-    Organism(std::vector<Organism*> parents);
+    Organism(OrganismVector parents);
 
     Organism reproduce(Organism other);
 };
