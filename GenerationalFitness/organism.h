@@ -18,8 +18,9 @@ private:
     friend std::ostream& operator<<(std::ostream& os, const Organism& organism);
 
 public:
-    Organism() : fitness(0.5) {};
+    Organism();
     Organism(float fitness);
+
     float get_fitness() const {return this->fitness;}
     void set_fitness(float fitness) {this->fitness = fitness;}
 

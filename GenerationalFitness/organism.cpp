@@ -1,5 +1,11 @@
 #include "organism.h"
 
+// Generate new random Organism
+Organism::Organism()
+{
+    
+}
+
 Organism::Organism(float fitness)
 {
     this->fitness = fitness;
