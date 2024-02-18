@@ -38,8 +38,8 @@ private:
     LifeFoodType food_type;
 
 public:
-    LifeFoodSource(LifeSquarePtr square, LifeFoodType type, int init_amount)
-        : LifeSquareObject(square), food_type(type), food_amount(init_amount) {};
+    LifeFoodSource(LifeSquarePtr square, LifeFoodType food_type, int init_amount)
+        : LifeSquareObject(square, FOOD), food_type(food_type), food_amount(init_amount) {};
 
     // Called by the LifeGrid to update the food source
     void update(LifeSquareObjectArray neighbors) override;

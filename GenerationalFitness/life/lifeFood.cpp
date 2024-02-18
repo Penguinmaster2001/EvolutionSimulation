@@ -17,31 +17,43 @@
  */
 void LifeFoodSource::update(LifeSquareObjectArray neighbors)
 {
+    int neighboring_food_count = 0;
 
+    for (LifeSquareObjectPtr neighbor : neighbors)
+    {
+        if (neighbor->get_object_type() == LifeSquareObjectType::FOOD)
+        {
+            neighboring_food_count++;
+        }
+    }
 
+    if (neighboring_food_count >= 4)
+    {
+        deactivate();
+    }
 
-    this->food_amount++;
+    food_amount += neighboring_food_count;
 }
 
 LifeFood LifeFoodSource::give_food(int amount)
 {
     if (food_amount <= 0)
     {
-        // TODO: Die somehow
+        deactivate();
     }
 
     LifeFood to_give;
-    to_give.type = this->food_type;
+    to_give.type = food_type;
 
-    if (this->food_amount > amount)
+    if (food_amount > amount)
     {
         to_give.food_amount = amount;
-        this->food_amount -= amount;
+        food_amount -= amount;
 
         return to_give;
     }
 
-    to_give.food_amount = this->food_amount;
-    this->food_amount = 0;
+    to_give.food_amount = food_amount;
+    food_amount = 0;
     return to_give;
 }
