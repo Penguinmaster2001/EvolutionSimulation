@@ -28,12 +28,11 @@
     In the future I hope to add asexual and other forms of reproduction
  */
 
-# ifndef ORGANISM_H
-# define ORGANISM_H
-
+# pragma once
 # include <vector>
-# include <random>
 # include <memory>
+
+class Organism;
 
 // Typedefs to make the shared pointers easier to read
 typedef std::shared_ptr<Organism> OrganismPtr;
@@ -49,5 +48,3 @@ public:
 
     virtual Organism reproduce(Organism other);
 };
-
-# endif

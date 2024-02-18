@@ -3,21 +3,33 @@
 
     LifeSquare is the base class for all squares in the LifeGrid.
 
-    This file also contains the base class for all objects that can exist in a LifeSquare.
+    Right now there's only one type of square.
+
+    The squares should be thought more of a surface than a container.
+    This means the objects on the squares have the responsiblitity of
+    updating the square they are on.
 
     This could be easily modified to support some crazy topologies but I'm keeping this simple for now.
  */
 
-# ifndef LIFESQUARE_H
-# define LIFESQUARE_H
-
+# pragma once
 # include <memory>
 # include <array>
 
-# include "lifeSquareObject.h"
+class LifeSquare;
+class LifeSquareObject;
 
 typedef std::shared_ptr<LifeSquare> LifeSquarePtr;
+typedef std::shared_ptr<LifeSquareObject> LifeSquareObjectPtr;
+
 typedef std::array<LifeSquarePtr, 8> LifeSquareNeighborArray;
+
+
+enum LifeSquareObjectType {
+    NONE,
+    ORGANISM,
+    FOOD
+};
 
 
 /*
@@ -31,6 +43,7 @@ typedef std::array<LifeSquarePtr, 8> LifeSquareNeighborArray;
 class LifeSquare {
 private:
     LifeSquareObjectPtr object;
+    LifeSquareObjectType object_type;
 
     // Stored counter-clockwise from the right
     LifeSquareNeighborArray neighbors;
@@ -38,16 +51,15 @@ private:
 public:
     LifeSquare(LifeSquareNeighborArray neighbors) : object(nullptr), neighbors(neighbors) {};
 
-    void set_object(LifeSquareObjectPtr object) { this->object = object; };
-    void remove_object() { this->object = nullptr; };
+    void set_object(LifeSquareObjectPtr object, LifeSquareObjectType object_type) { this->object = object; this->object_type = object_type; };
+    void remove_object() { this->object = nullptr; object_type = LifeSquareObjectType::NONE; };
 
     LifeSquareObjectPtr get_object() { return object; };
 
-    LifeSquareObjectType get_object_type() { return object->get_object_type(); };
+    LifeSquareObjectType get_object_type() { return object_type; };
 
     LifeSquareNeighborArray get_neighbors() { return neighbors; };
 
+    bool is_occupied() { return object != nullptr; };
     bool is_empty() { return object == nullptr; };
 };
-
-# endif

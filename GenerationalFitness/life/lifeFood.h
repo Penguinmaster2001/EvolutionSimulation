@@ -4,13 +4,13 @@
     This file contains the life food source and types
  */
 
-# ifndef LIFEFOOD_H
-# define LIFEFOOD_H
-
+# pragma once
 # include <random>
 
-# include "lifeSquare.h"
+# include "lifeSquareObject.h"
 
+
+# define FOOD_SPREAD_THRESHOLD 20
 
 /*
     Each food type requires different stomach types
@@ -28,7 +28,11 @@ enum LifeFoodType {
 
 
 
-# define FOOD_SPREAD_THRESHOLD 20
+// What the source will give
+struct LifeFood {
+    int food_amount;
+    LifeFoodType type;
+};
 
 
 
@@ -40,26 +44,16 @@ enum LifeFoodType {
  */
 class LifeFoodSource : public LifeSquareObject {
 private:
-    int food_amount;
     LifeFoodType food_type;
+    int food_amount;
 
 public:
     LifeFoodSource(LifeSquarePtr square, LifeFoodType food_type, int init_amount)
         : LifeSquareObject(square, FOOD), food_type(food_type), food_amount(init_amount) {};
 
     // Called by the LifeGrid to update the food source
-    void update(LifeSquareObjectArray neighbors) override;
+    void update(LifeSquareNeighborArray neighbors) override;
 
     // Called when something eats the food
     LifeFood give_food(int amount);
 };
-
-
-
-// What the source will give
-struct LifeFood {
-    int food_amount;
-    LifeFoodType type;
-};
-
-# endif

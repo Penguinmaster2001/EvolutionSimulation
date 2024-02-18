@@ -8,9 +8,7 @@
     I will add more to this class in the future as needed.
  */
 
-#ifndef SIMULATOR_H
-#define SIMULATOR_H
-
+# pragma once
 # include "organism.h"
 
 # include <iostream>
@@ -28,5 +26,3 @@ public:
 
     virtual void run();
 };
-
-#endif

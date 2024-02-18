@@ -3,39 +3,35 @@
 
 CC = g++
 CPPFLAGS = -Wall -Wextra -std=c++17
-LIFE = lifeSquare.o lifeSquareObject.o lifeFood.o lifeGrid.o lifeOrganism.o
 
-main.exe: main.o simulator.o organism.o LIFE
+main.exe: main.o simulator.o organism.o life/lifeSquareObject.o life/lifeFood.o # lifeGrid.o lifeOrganism.o
 	$(CC) $^ $(CPPFLAGS) -o $@
 
 main.o: main.cpp main.h
-	$(CC) $(CPPFLAGS) -c $<
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 simulator.o: simulator.cpp simulator.h
-	$(CC) $(CPPFLAGS) -c $<
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 organism.o: organism.cpp organism.h
-	$(CC) $(CPPFLAGS) -c $<
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 
-lifeSquare.o: lifeSquare.h lifeSquare.cpp
-	$(CC) $(CPPFLAGS) -c $<
+life/lifeSquareObject.o: life/lifeSquareObject.cpp life/lifeSquareObject.h
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
-lifeSquare.o: lifeSquareObject.h lifeSquareObject.cpp
-	$(CC) $(CPPFLAGS) -c $<
+life/lifeFood.o: life/lifeFood.cpp life/lifeFood.h
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
-lifeFood.o: lifeFood.h lifeFood.cpp
-	$(CC) $(CPPFLAGS) -c $<
+# lifeGrid.o: life/lifeGrid.h life/lifeGrid.cpp
+# 	$(CC) $(CPPFLAGS) -c $< -o $@
 
-lifeGrid.o: lifeGrid.h lifeGrid.cpp
-	$(CC) $(CPPFLAGS) -c $<
-
-lifeOrganism.o: lifeOrganism.h lifeOrganism.cpp
-	$(CC) $(CPPFLAGS) -c $<
+# lifeOrganism.o: life/lifeOrganism.h life/lifeOrganism.cpp
+# 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 
 .PHONY: clean
 clean:
-	rm *.o main.exe
+	rm *.o *.gch life/*.o life/*.gch main.exe
 
 -include $(wildcard *.d)

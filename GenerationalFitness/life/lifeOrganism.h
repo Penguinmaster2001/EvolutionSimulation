@@ -24,14 +24,10 @@
 
 
 
-# ifndef LIFEORGANISM_H
-# define LIFEORGANISM_H
-
+# pragma once
 # include "../organism.h"
 # include "lifeSquare.h"
 
 class LifeOrganism : public Organism, public LifeSquareObject {
 
 };
-
-# endif

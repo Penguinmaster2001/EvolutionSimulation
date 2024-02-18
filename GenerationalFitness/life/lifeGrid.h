@@ -13,9 +13,7 @@
     The size of the grid is set in the constructor and cannot be changed.
  */
 
-# ifndef LIFEGRID_H
-# define LIFEGRID_H
-
+# pragma once
 # include "../simulator.h"
 # include "lifeSquare.h"
 
@@ -40,5 +38,3 @@ public:
     // Update all the squares in the grid, also do some other stuff idk yet
     void run() override;
 };
-
-# endif

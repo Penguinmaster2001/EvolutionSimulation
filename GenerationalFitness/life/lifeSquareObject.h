@@ -10,23 +10,10 @@
     It must have an update method that takes an array of its neighbors.
  */
 
-# ifndef LIFESQUAREOBJECT_H
-# define LIFESQUAREOBJECT_H
-
-# include <memory>
-# include <array>
-
+# pragma once
 # include "lifeSquare.h"
 
-typedef std::shared_ptr<LifeSquareObject> LifeSquareObjectPtr;
-typedef std::array<std::shared_ptr<LifeSquareObject>, 8> LifeSquareObjectArray;
 
-
-enum LifeSquareObjectType {
-    NONE,
-    ORGANISM,
-    FOOD
-};
 
 
 class LifeSquareObject {
@@ -42,7 +29,7 @@ public:
     LifeSquarePtr get_square() { return square; };
 
     // Called by the LifeGrid to update the object
-    virtual void update(LifeSquareObjectArray neighbors);
+    virtual void update(LifeSquareNeighborArray neighbors);
 
     LifeSquareObjectType get_object_type() { return object_type; };
 
@@ -51,5 +38,3 @@ public:
     // Remove from the parent square and set active to false
     void deactivate();
 };
-
-# endif

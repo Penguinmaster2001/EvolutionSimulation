@@ -15,11 +15,11 @@
             Also if give_food() is called while food_amount is 0, the source will die
 
  */
-void LifeFoodSource::update(LifeSquareObjectArray neighbors)
+void LifeFoodSource::update(LifeSquareNeighborArray neighbors)
 {
     // Count the number of neighboring food sources
     int neighboring_food_count = 0;
-    for (LifeSquareObjectPtr neighbor : neighbors)
+    for (LifeSquarePtr neighbor : neighbors)
     {
         if (neighbor->get_object_type() == LifeSquareObjectType::FOOD)
         {
@@ -45,7 +45,7 @@ void LifeFoodSource::update(LifeSquareObjectArray neighbors)
         {
             LifeFoodSource new_food_source = LifeFoodSource(spread_square, food_type, food_amount / 2);
 
-            spread_square->set_object(std::make_shared<LifeFoodSource>(new_food_source));
+            spread_square->set_object(std::make_shared<LifeFoodSource>(new_food_source), LifeSquareObjectType::FOOD);
             food_amount /= 2;
         }
     }
