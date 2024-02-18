@@ -1,4 +1,4 @@
 
 # include <iostream>
-# include "lifeGrid.h"
+# include "life/lifeGrid.h"
 # include "simulator.h"
