@@ -14,34 +14,10 @@
 # include <memory>
 # include <array>
 
-typedef std::shared_ptr<LifeSquareObject> LifeSquareObjectPtr;
-typedef std::array<std::shared_ptr<LifeSquareObject>, 8> LifeSquareObjectArray;
+# include "lifeSquareObject.h"
+
 typedef std::shared_ptr<LifeSquare> LifeSquarePtr;
 typedef std::array<LifeSquarePtr, 8> LifeSquareNeighborArray;
-
-
-
-/*
-    LifeSquareObject is the base class for all objects that can exist in a LifeSquare.
-    It is a virtual class and should be extended to create specific objects.
-
-    It must exist in a LifeSquare (it must hold a reference to its square).
-
-    It must have an update method that takes an array of its neighbors.
- */
-class LifeSquareObject {
-private:
-    LifeSquarePtr square;
-
-public:
-    LifeSquareObject(LifeSquarePtr square) : square(square) {};
-
-    LifeSquarePtr get_square() { return square; };
-
-    // Called by the LifeGrid to update the object
-    virtual void update(LifeSquareObjectArray neighbors);
-};
-
 
 
 /*
@@ -62,12 +38,16 @@ private:
 public:
     LifeSquare(LifeSquareNeighborArray neighbors) : object(nullptr), neighbors(neighbors) {};
 
-    void setObject(LifeSquareObjectPtr object) { this->object = object; };
+    void set_object(LifeSquareObjectPtr object) { this->object = object; };
+    void remove_object() { this->object = nullptr; };
+
     LifeSquareObjectPtr get_object() { return object; };
+
+    LifeSquareObjectType get_object_type() { return object->get_object_type(); };
 
     LifeSquareNeighborArray get_neighbors() { return neighbors; };
 
-    LifeSquareObjectArray get_neighbor_objects();
+    bool is_empty() { return object == nullptr; };
 };
 
 # endif
