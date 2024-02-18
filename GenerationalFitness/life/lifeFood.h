@@ -7,6 +7,8 @@
 # ifndef LIFEFOOD_H
 # define LIFEFOOD_H
 
+# include <random>
+
 # include "lifeSquare.h"
 
 
@@ -23,6 +25,10 @@ enum LifeFoodType {
     SALSIFY,
     DRAGONFRUIT
 };
+
+
+
+# define FOOD_SPREAD_THRESHOLD 20
 
 
 
