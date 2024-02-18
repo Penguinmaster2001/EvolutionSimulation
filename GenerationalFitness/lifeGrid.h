@@ -17,37 +17,7 @@
 # define LIFEGRID_H
 
 # include "simulator.h"
-# include "organism.h"
 # include "lifeSquare.h"
-
-
-// Crazy how these are the foods I came up with
-enum LifeFoodType {
-    CHAMOMILE,
-    ARUGULA,
-    WATERMELON,
-    SALSIFY,
-    DRAGONFRUIT
-};
-
-/*
-    LifeFood is the base class for all food sources in the LifeGrid.
-    It is a virtual class and should be extended to create specific food sources.
-
-    I'm going to keep this one super simple.
- */
-class LifeFood : public LifeSquareObject {
-private:
-    int food_amount;
-    int food_type;
-
-public:
-    LifeFood(LifeSquarePtr square) : LifeSquareObject(square) {};
-
-    // Called by the LifeGrid to update the food source
-    virtual void update(LifeSquareObjectArray neighbors) override;
-
-};
 
 
 
