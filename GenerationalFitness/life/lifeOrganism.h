@@ -27,7 +27,7 @@
 # ifndef LIFEORGANISM_H
 # define LIFEORGANISM_H
 
-# include "organism.h"
+# include "../organism.h"
 # include "lifeSquare.h"
 
 class LifeOrganism : public Organism, public LifeSquareObject {

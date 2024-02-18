@@ -16,7 +16,7 @@
 # ifndef LIFEGRID_H
 # define LIFEGRID_H
 
-# include "simulator.h"
+# include "../simulator.h"
 # include "lifeSquare.h"
 
 
