@@ -1,8 +1,7 @@
 /*
     Anthony Cieri 2024
 
-
-
+    This file contains the life food source and types
  */
 
 # ifndef LIFEFOOD_H
@@ -33,18 +32,28 @@ enum LifeFoodType {
 
     I'm going to keep this one super simple.
  */
-class LifeFood : public LifeSquareObject {
+class LifeFoodSource : public LifeSquareObject {
 private:
     int food_amount;
-    int food_type;
+    LifeFoodType food_type;
 
 public:
-    LifeFood(LifeSquarePtr square, int type, int init_amount)
+    LifeFoodSource(LifeSquarePtr square, LifeFoodType type, int init_amount)
         : LifeSquareObject(square), food_type(type), food_amount(init_amount) {};
 
     // Called by the LifeGrid to update the food source
-    virtual void update(LifeSquareObjectArray neighbors) override;
+    void update(LifeSquareObjectArray neighbors) override;
 
+    // Called when something eats the food
+    LifeFood give_food(int amount);
+};
+
+
+
+// What the source will give
+struct LifeFood {
+    int food_amount;
+    LifeFoodType type;
 };
 
 # endif
